@@ -10,11 +10,11 @@ type LanguageComponentProps = {
 const LanguageComponent: FC<LanguageComponentProps> = ({language, setLanguage, t}: LanguageComponentProps) => {
   return (
     <div className={'language'}>
-      <div
+      <button
         onClick={() => setLanguage('SPANISH')}
         className={language === 'SPANISH' ? 'language-button active' : 'language-button'}>
         {t('language.spanish')}
-      </div>
+      </button>
       <button
         onClick={() => setLanguage('ENGLISH')}
         className={language === 'ENGLISH' ? 'language-button active' : 'language-button'}>
