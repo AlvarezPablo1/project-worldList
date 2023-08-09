@@ -13,7 +13,7 @@ const LocationDetailContainer: FC<LocationDetailContainerProps> = ({
 
   if (error) return <div>Error when loading. Please try again later.</div>;
 
-  return (<>{isLoading ? <div>Loading</div>: <LocationDetailComponent location={location} /> }</>);
+  return <>{isLoading ? <div>Loading</div> : <LocationDetailComponent location={location} />}</>;
 };
 
 export default LocationDetailContainer;

@@ -1,10 +1,12 @@
-import { FollowingButtonComponent } from "features/following/button"
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import Character from "./characters.types";
-import { addCharacterToFollowingList, removeCharacterToFollowingList } from "features/following/following.slices";
+import { FollowingButtonComponent } from 'features/following/button';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import Character from './characters.types';
+import {
+  addCharacterToFollowingList,
+  removeCharacterToFollowingList
+} from 'features/following/following.slices';
 
-const Card = ({data}: any) => {
-  
+const Card = ({ data }: any) => {
   const dispatch = useAppDispatch();
   const followingIds = useAppSelector((state) => state.following.followingIds);
 
@@ -16,31 +18,26 @@ const Card = ({data}: any) => {
     }
   };
   return (
-    <div className={"card"} key={data.id}>
-          <div className={"card-image"}>
-            <Card.Image src={data.image} alt={data.name}/>
-          </div>
-          <div className={"card-body"}>
-            <Card.Content name={data.name}/>
-            <Card.Action followingIds={followingIds} onToggleFavorite={onToggleFavorite} data={data}/>
-          </div>
-        </div>
-  )
-}
-export default Card
+    <div className={'card'} key={data.id}>
+      <div className={'card-image'}>
+        <Card.Image src={data.image} alt={data.name} />
+      </div>
+      <div className={'card-body'}>
+        <Card.Content name={data.name} />
+        <Card.Action followingIds={followingIds} onToggleFavorite={onToggleFavorite} data={data} />
+      </div>
+    </div>
+  );
+};
+export default Card;
 
+Card.Image = ({ src, alt }: { src: string; alt: string }) => <img src={src} alt={alt} />;
 
-  Card.Image = ({src, alt}: {src:string, alt:string} )=>{
-    return <img src={src} alt={alt}/>
-  }
+Card.Content = ({ name }: { name: string }) => <span>{name}</span>;
 
-  Card.Content = ({name}: {name: string} )=>{
-    return <span>{name}</span>
-  }
-
-  Card.Action = ({followingIds, onToggleFavorite, data}: any) => {
-    return <FollowingButtonComponent
+Card.Action = ({ followingIds, onToggleFavorite, data }: any) => (
+  <FollowingButtonComponent
     isFav={followingIds.indexOf(data.id) >= 0}
     onToggleFavorite={(setFav) => onToggleFavorite(data, setFav)}
   />
-  }
+);

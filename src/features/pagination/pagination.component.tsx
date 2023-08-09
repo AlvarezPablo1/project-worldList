@@ -7,24 +7,20 @@ type PaginationProps = {
   onN: () => void;
 };
 
-const Pagination: FC<PaginationProps> = ({
-  p,
-     onP,
-  onN
-}: PaginationProps) => {
-    const onPrev = () => {
-      onP();
-    };
+const Pagination: FC<PaginationProps> = ({ p, onP, onN }: PaginationProps) => {
+  const onPrev = () => {
+    onP();
+  };
 
-    const onNext = () => {
-      onN();
-    };
+  const onNext = () => {
+    onN();
+  };
 
   return (
     <div className={'pagination'}>
-        <button disabled={!p.prev} onClick={() => onPrev()} className={'button primary'}>
-          Previous
-        </button>
+      <button disabled={!p.prev} onClick={() => onPrev()} className={'button primary'}>
+        Previous
+      </button>
       <button disabled={!p.next} onClick={() => onNext()} className={'button primary'}>
         Next
       </button>

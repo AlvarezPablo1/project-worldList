@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type LS = {
-        query: string;
+  query: string;
   page: number;
 };
 

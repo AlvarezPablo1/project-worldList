@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-const LoadingComponent: FC = () => {
-  return <div>Loading...</div>;
-};
+const LoadingComponent: FC = () => <div>Loading...</div>;
 
 export default LoadingComponent;

@@ -6,20 +6,19 @@ export type CharactersComponentProps = {
   rickIDDS: number[];
 };
 
-const CharactersComponent: FC<CharactersComponentProps> = ({ rickIDDS }: CharactersComponentProps) => {
-  const { data: characters, error, isLoading } = useGetCharactersQuery( { ids: rickIDDS } );
-
+const CharactersComponent: FC<CharactersComponentProps> = ({
+  rickIDDS
+}: CharactersComponentProps) => {
+  const { data: characters, error, isLoading } = useGetCharactersQuery({ ids: rickIDDS });
 
   if (isLoading) return <div>Loading characters...</div>;
   if (error || !characters) return <div>Error when loading. Please try again later.</div>;
   const charactersArray = Array.isArray(characters) ? characters : [characters];
 
-  
-
   return (
     <div className={'characters'}>
       {charactersArray.map((iHateThisChars) => (
-        <Card key={iHateThisChars.id} data={iHateThisChars}/>
+        <Card key={iHateThisChars.id} data={iHateThisChars} />
       ))}
     </div>
   );

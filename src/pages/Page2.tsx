@@ -12,19 +12,17 @@ import { LocationDetailContainer } from 'features/locations/detail';
  */
 const Page2: FC = () => {
   const params = useParams();
-        const navigate = useNavigate();
+  const navigate = useNavigate();
 
-
-        if (!params.id) {
+  if (!params.id) {
     navigate('/');
 
     return <></>;
   }
   return (
     <div>
-
       <div className={'container'}>
-          <LocationDetailContainer id={parseInt(params.id, 10)} />
+        <LocationDetailContainer id={parseInt(params.id, 10)} />
       </div>
     </div>
   );
